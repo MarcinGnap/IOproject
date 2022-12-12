@@ -62,16 +62,14 @@ public class Aplikacja {
      * @param dataKonca
      */
     public boolean sprawdzKolidacje(Produkt pozadanyProdukt, LocalDate dataPocz, LocalDate dataKonca) {
-        // TODO - implement Aplikacja.sprawdzKolidacje
         if(pozadanyProdukt != null){
             Vector<Produkt> pozadanaOferta = new Vector<>();
             pozadanaOferta.add(pozadanyProdukt);
             Vector<Transakcja> mozliweKolidacje = wyszukajTransakcja(null, null, pozadanaOferta);
             for (int k = 0; k < mozliweKolidacje.size(); k++) {
-                if (dataKonca.isBefore(mozliweKolidacje.get(k).getDataPaczatku()) && ){
+                if (dataPocz.isAfter(mozliweKolidacje.get(k).getDataKonca()) || dataKonca.isBefore(mozliweKolidacje.get(k).getDataPaczatku())){
                     mozliweKolidacje.remove(k);
                 }
-                // TODO here
             }
             if (mozliweKolidacje.size() > 0){
                 return true;
