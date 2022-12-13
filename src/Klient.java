@@ -1,6 +1,8 @@
 import java.lang.String;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Vector;
 
 public class Klient extends Osoba {
 
@@ -37,7 +39,6 @@ public class Klient extends Osoba {
     }
 
     public ArrayList<Produkt> getOferty() {
-        // TODO - implement Klient.getOferty
         //throw new UnsupportedOperationException();
         return oferty;
     }
@@ -46,9 +47,21 @@ public class Klient extends Osoba {
      *
      * @param produkt
      */
-    public boolean rezerwacja(Produkt produkt) {
+    public Vector<LocalDate> rezerwacja(Produkt produkt) {
         // TODO - implement Klient.rezerwacja
-        throw new UnsupportedOperationException();
+        Vector<LocalDate> data = new Vector<>();
+        Scanner screzerwacja = new Scanner(System.in);
+        System.out.println("Podaj date poczatku wypozyczenia (YYYY-MM-DD): ");
+        String wyborKlientaPocz = screzerwacja.next();
+        LocalDate dataPocz = LocalDate.parse(wyborKlientaPocz);
+        System.out.println("Podaj date poczatku wypozyczenia (YYYY-MM-DD): ");
+        String wyborKlientaKon = screzerwacja.next();
+        LocalDate dataKonca = LocalDate.parse(wyborKlientaKon);
+        data.add(dataPocz);
+        data.add(dataKonca);
+
+        return data;
+        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -78,7 +91,7 @@ public class Klient extends Osoba {
      */
     public boolean anulujRezerwacje(Transakcja transakcja, LocalDate aktualnaData) {
         // TODO - implement Klient.anulujRezerwacje
-        if (aktualnaData.compareTo(transakcja.getDataPaczatku()) > 0){
+        if (aktualnaData.isBefore(transakcja.getDataPaczatku())){
             zakupy.remove(transakcja);
             return true;
         }

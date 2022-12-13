@@ -12,7 +12,7 @@ public class Produkt {
      * @param nazwa
      * @param cena
      */
-    public Produkt(String nazwa, int cena) {
+    public Produkt(String nazwa, float cena) {
         this.nazwa = nazwa;
         setCena(cena);
         //throw new UnsupportedOperationException();

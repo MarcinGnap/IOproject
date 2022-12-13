@@ -1,5 +1,5 @@
 public enum status {
     wypozyczony,
     zgubiony,
-    nastanie
+    dostepny
 }

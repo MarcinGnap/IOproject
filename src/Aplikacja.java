@@ -28,7 +28,6 @@ public class Aplikacja {
      * @param nazwa
      */
     public Vector<Produkt> szukajProdukt(String nazwa, float cena, int dostep) {
-        // TODO - implement Aplikacja.szukajProdukt
         Vector<Produkt> wyszukaneProdukty = oferty;
         if(nazwa != null){
             for(int x = 0; x < wyszukaneProdukty.size(); x++){
@@ -85,7 +84,6 @@ public class Aplikacja {
      * @param ilosc
      */
     public boolean sprawdzDostepnoscIlosci(Produkt produkt, int ilosc) {
-        // TODO - implement Aplikacja.sprawdzDostepnoscIlosci
         if (ilosc < produkt.getDostepny()){
             return false;
         }
@@ -102,7 +100,6 @@ public class Aplikacja {
      * @param imie
      */
     public Vector<Klient> wyszukajKlienta(String imie, String nazwisko, float pesel) {
-        // TODO - implement Aplikacja.wyszukajKlienta
         Vector<Klient> prawdopodobnyKlient = klienci;
         if(imie != null){
             for(int x = 0; x < prawdopodobnyKlient.size(); x++){
@@ -135,7 +132,6 @@ public class Aplikacja {
      * @param sprzet
      */
     public Vector<Transakcja> wyszukajTransakcja(LocalDate dataPoczatku, LocalDate dataKonca, Vector<Produkt> sprzet) {
-        // TODO - implement Aplikacja.wyszukajTransakcja
         Vector<Transakcja> mozliweTransakcje = transakcje;
         if(dataPoczatku != null){
             for(int x = 0; x < mozliweTransakcje.size(); x++){
@@ -167,8 +163,8 @@ public class Aplikacja {
     public static void menu(){
         for (; ;) {
             System.out.print("1. Klient\n" +
-                    "2. Pracownik\n" +
-                    "3. Wyjście\n");
+                            "2. Pracownik\n" +
+                            "3. Wyjście\n");
 
             Scanner sc = new Scanner(System.in);
             System.out.println("Wybierz opcje: ");

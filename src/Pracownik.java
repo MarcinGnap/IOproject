@@ -1,4 +1,5 @@
 import java.lang.String;
+import java.util.Scanner;
 
 public class Pracownik extends Osoba {
 
@@ -34,9 +35,21 @@ public class Pracownik extends Osoba {
         this.stanowisko = stanowisko;
     }
 
-    public boolean stworzOferte() {
+    public Produkt stworzOferte() {
         // TODO - implement Pracownik.stworzOferte
-        throw new UnsupportedOperationException();
+        Scanner scOferta = new Scanner(System.in);
+        System.out.println("Wpisz nazwe: ");
+        String nazwa = scOferta.next();
+        System.out.println("Wpisz cene: ");
+        float cena = scOferta.nextFloat();
+        Produkt nowyProdukt = new Produkt(nazwa, cena);
+        System.out.println("Wpisz ilosc: ");
+        int ilosc = scOferta.nextInt();
+        nowyProdukt.setDostepny(ilosc);
+        char status = 'd';
+        nowyProdukt.setStatus(status);
+        return nowyProdukt;
+        //throw new UnsupportedOperationException();
     }
 
     /**
