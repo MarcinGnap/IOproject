@@ -64,9 +64,26 @@ public class Pracownik extends Osoba {
      *
      * @param transakcja
      */
-    public boolean nakazZwrotu(Transakcja transakcja) {
+    public void nakazZwrotu(Transakcja transakcja) {
         // TODO - implement Pracownik.nakazZwrotu
-        throw new UnsupportedOperationException();
+        szczegoly(transakcja);
+        Vector<Produkt> tempSprzetNakaz = transakcja.getSprzet();
+        System.out.println("Wybierz produkt, ktory ma zostac zwrocony (jesli wszystkie wybierz 0): ");
+        Scanner scNakaz = new Scanner(System.in);
+        int wyborNakaz = scNakaz.nextInt();
+        if (wyborNakaz == 0){
+            for (int i = 0; i < transakcja.getSprzet().size(); i++){
+                tempSprzetNakaz.get(i).setStatus('n');
+            }
+            transakcja.setSprzet(tempSprzetNakaz);
+        }
+        else if (wyborNakaz > 0 && wyborNakaz <= transakcja.getSprzet().size()){
+            tempSprzetNakaz.get(wyborNakaz).setStatus('n');
+            transakcja.setSprzet(tempSprzetNakaz);
+        }
+        else{
+            System.out.println("Wybrana pozycja nie znajduje się na liscie.");
+        }
     }
 
     /**
@@ -81,11 +98,32 @@ public class Pracownik extends Osoba {
 
     /**
      *
-     * @param zakupy
+     * @param klientHistoria
      */
-    public Transakcja sprawdzHistorie(Transakcja zakupy) {
+    public void sprawdzHistorie(Klient klientHistoria) {
         // TODO - implement Pracownik.sprawdzHistorie
-        throw new UnsupportedOperationException();
+        klientHistoria.getZakupy();
+        System.out.println("Wszystkie wypozyczenia wybranego klienta: ");
+        for (int j = 0; j < klientHistoria.getZakupy().size(); j++){
+            int a = j + 1;
+            System.out.println(a + ". ");
+            for (int x = 0; x >  + klientHistoria.getZakupy().get(j).getSprzet().size(); x++){
+                int c = x + 1;
+                System.out.println("    " + c + ". " + klientHistoria.getZakupy().get(j).getSprzet().get(x).getNazwa() + "   x " + klientHistoria.getZakupy().get(j).getSprzet().get(x).getDostepny());
+            }
+        }
+        System.out.println("Wybierz transakcje, ktorej szczegoly chcesz sprawdzic (jesli chcesz wrocic wybierz 0): ");
+        Scanner scHistoria = new Scanner(System.in);
+        int wyborHistoria = scHistoria.nextInt();
+        if (wyborHistoria == 0){
+            return;
+        }
+        else if (wyborHistoria > 0 && wyborHistoria <= klientHistoria.getZakupy().size()){
+            szczegoly(klientHistoria.getZakupy().get(wyborHistoria));
+        }
+        else{
+            System.out.println("Wybrana pozycja nie znajduje się na liscie.");
+        }
     }
 
     /**
@@ -103,6 +141,7 @@ public class Pracownik extends Osoba {
             System.out.println("Ilosc: " + tempSprzet.get(i).getDostepny());
         }
         System.out.println("Data poczatku: " + transakcja.getDataPaczatku());
+        System.out.println("Data konca: " + transakcja.getDataKonca());
         System.out.println("Koszt poczatkowy: " + transakcja.getKosztPocz());
         System.out.println("Doplata: " + transakcja.getDoplata());
     }
@@ -111,9 +150,9 @@ public class Pracownik extends Osoba {
      *
      * @param transakcja
      */
-    public float sprawdzDoplate(Transakcja transakcja) {
+    public void sprawdzDoplate(Transakcja transakcja) {
         // TODO - implement Pracownik.sprawdzDoplate
-        return transakcja.getDoplata();
+        System.out.println("Doplata: " + transakcja.getDoplata());
     }
 
     public void zmienDostepnosc(int ilosc, Produkt produkt){
