@@ -27,7 +27,7 @@ public class Aplikacja {
      * @param cena
      * @param nazwa
      */
-    public Vector<Produkt> szukajProdukt(String nazwa, float cena, int dostep) {
+    public Vector<Produkt> wyszukajProdukt(String nazwa, float cena, int dostep) {
         Vector<Produkt> wyszukaneProdukty = oferty;
         if(nazwa != null){
             for(int x = 0; x < wyszukaneProdukty.size(); x++){
@@ -155,6 +155,17 @@ public class Aplikacja {
         return mozliweTransakcje;
     }
 
+
+    public void wyswietlWszystkieOferty(){
+        System.out.println("Aktualnie dostepne produkty: ");
+        int tempIterator = 0;
+        for (int i = 0; i < oferty.size(); i++){
+            if (oferty.get(i).getDostepny() > 0){
+                tempIterator = tempIterator + 1;
+                System.out.println(tempIterator + "." + oferty.get(i).getNazwa());
+            }
+        }
+    }
 
 
     public static void menu(){

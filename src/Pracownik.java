@@ -55,10 +55,11 @@ public class Pracownik extends Osoba {
      *
      * @param produkt
      */
+    /*
     public boolean finalizacjaWypozyczenia(Produkt produkt) {
         // TODO - implement Pracownik.finalizacjaWypozyczenia
         throw new UnsupportedOperationException();
-    }
+    }*/
 
     /**
      *
@@ -91,10 +92,11 @@ public class Pracownik extends Osoba {
      * @param transakcja
      * @param okresCzasu
      */
+    /*
     public boolean przedluzenieFinalizacja(Transakcja transakcja, String okresCzasu) {
         // TODO - implement Pracownik.przedluzenieFinalizacja
         throw new UnsupportedOperationException();
-    }
+    }*/
 
     /**
      *
@@ -102,7 +104,6 @@ public class Pracownik extends Osoba {
      */
     public void sprawdzHistorie(Klient klientHistoria) {
         // TODO - implement Pracownik.sprawdzHistorie
-        klientHistoria.getZakupy();
         System.out.println("Wszystkie wypozyczenia wybranego klienta: ");
         for (int j = 0; j < klientHistoria.getZakupy().size(); j++){
             int a = j + 1;
