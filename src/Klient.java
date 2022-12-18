@@ -23,7 +23,6 @@ public class Klient extends Osoba {
         setPesel(pesel);
         setNumerTel(numerTel);
         setEmail(email);
-        //throw new UnsupportedOperationException();
     }
 
     public ArrayList<Transakcja> getZakupy() {
@@ -39,7 +38,6 @@ public class Klient extends Osoba {
     }
 
     public ArrayList<Produkt> getOferty() {
-        //throw new UnsupportedOperationException();
         return oferty;
     }
 
@@ -61,7 +59,6 @@ public class Klient extends Osoba {
         data.add(dataKonca);
 
         return data;
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -90,7 +87,6 @@ public class Klient extends Osoba {
      * @param transakcja
      */
     public boolean anulujRezerwacje(Transakcja transakcja, LocalDate aktualnaData) {
-        // TODO - implement Klient.anulujRezerwacje
         if (aktualnaData.isBefore(transakcja.getDataPaczatku())){
             zakupy.remove(transakcja);
             return true;

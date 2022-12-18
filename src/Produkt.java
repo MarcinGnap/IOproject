@@ -15,7 +15,6 @@ public class Produkt {
     public Produkt(String nazwa, float cena) {
         this.nazwa = nazwa;
         setCena(cena);
-        //throw new UnsupportedOperationException();
     }
 
     public String getNazwa() {

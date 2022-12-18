@@ -20,7 +20,6 @@ public class Transakcja {
         setDataPaczatku(dataPoczatku);
         setKosztPocz(koszt);
         this.sprzet = sprzet;
-        //throw new UnsupportedOperationException();
     }
 
     public LocalDate getDataPaczatku() {

@@ -51,7 +51,6 @@ public class Aplikacja {
             }
         }
         return wyszukaneProdukty;
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -75,7 +74,6 @@ public class Aplikacja {
             }
         }
         return false;
-        // throw new UnsupportedOperationException();
     }
 
     /**
@@ -90,7 +88,6 @@ public class Aplikacja {
         else{
             return true;
         }
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -127,7 +124,8 @@ public class Aplikacja {
     }
 
     /**
-     *  @param dataPoczatku
+     *
+     * @param dataPoczatku
      * @param dataKonca
      * @param sprzet
      */
@@ -155,7 +153,6 @@ public class Aplikacja {
             }
         }
         return mozliweTransakcje;
-        //throw new UnsupportedOperationException();
     }
 
 

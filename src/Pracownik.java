@@ -1,5 +1,6 @@
 import java.lang.String;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Pracownik extends Osoba {
 
@@ -20,7 +21,6 @@ public class Pracownik extends Osoba {
         setNumerTel(numerTel);
         setEmail(email);
         setStanowisko(stanowisko);
-        //throw new UnsupportedOperationException();
     }
 
     public char getStanowisko() {
@@ -49,7 +49,6 @@ public class Pracownik extends Osoba {
         char status = 'd';
         nowyProdukt.setStatus(status);
         return nowyProdukt;
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -93,9 +92,19 @@ public class Pracownik extends Osoba {
      *
      * @param transakcja
      */
-    public Transakcja szczegoly(Transakcja transakcja) {
+    public void szczegoly(Transakcja transakcja) {
         // TODO - implement Pracownik.szczegoly
-        throw new UnsupportedOperationException();
+        Vector<Produkt> tempSprzet = transakcja.getSprzet();
+        System.out.println("Klient: ");
+        for (int i = 0; i < tempSprzet.size(); i++){
+            int b = i + 1;
+            System.out.println(b + ".");
+            System.out.println("Nazwa produkt: " + tempSprzet.get(i).getNazwa());
+            System.out.println("Ilosc: " + tempSprzet.get(i).getDostepny());
+        }
+        System.out.println("Data poczatku: " + transakcja.getDataPaczatku());
+        System.out.println("Koszt poczatkowy: " + transakcja.getKosztPocz());
+        System.out.println("Doplata: " + transakcja.getDoplata());
     }
 
     /**
@@ -105,7 +114,6 @@ public class Pracownik extends Osoba {
     public float sprawdzDoplate(Transakcja transakcja) {
         // TODO - implement Pracownik.sprawdzDoplate
         return transakcja.getDoplata();
-        //throw new UnsupportedOperationException();
     }
 
     public void zmienDostepnosc(int ilosc, Produkt produkt){
