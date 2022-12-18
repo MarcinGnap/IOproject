@@ -142,8 +142,8 @@ public class Pracownik extends Osoba {
         }
         System.out.println("Data poczatku: " + transakcja.getDataPaczatku());
         System.out.println("Data konca: " + transakcja.getDataKonca());
-        System.out.println("Koszt poczatkowy: " + transakcja.getKosztPocz());
-        System.out.println("Doplata: " + transakcja.getDoplata());
+        System.out.println("Koszt poczatkowy: " + transakcja.getKosztPocz() + " zl");
+        System.out.println("Doplata: " + transakcja.getDoplata() + " zl");
     }
 
     /**
@@ -152,7 +152,7 @@ public class Pracownik extends Osoba {
      */
     public void sprawdzDoplate(Transakcja transakcja) {
         // TODO - implement Pracownik.sprawdzDoplate
-        System.out.println("Doplata: " + transakcja.getDoplata());
+        System.out.println("Aktualna doplata wynosi: " + transakcja.getDoplata() + " zl");
     }
 
     public void zmienDostepnosc(int ilosc, Produkt produkt){

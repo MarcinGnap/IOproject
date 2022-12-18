@@ -100,9 +100,25 @@ public class Klient extends Osoba {
      *
      * @param transakcja
      */
-    public float zgubienie(Transakcja transakcja) {
+    public void zgubienie(Transakcja transakcja) {
         // TODO - implement Klient.zgubienie
-        throw new UnsupportedOperationException();
+        Vector<Produkt> tempSprzetzgubienie = transakcja.getSprzet();
+        System.out.println("Wybierz produkt, ktory zostal zgubiony (jesli wszystkie wybierz 0): ");
+        Scanner scZgubienie = new Scanner(System.in);
+        int wyborZgubienie = scZgubienie.nextInt();
+        if (wyborZgubienie == 0){
+            for (int i = 0; i < transakcja.getSprzet().size(); i++){
+                tempSprzetzgubienie.get(i).setStatus('z');
+            }
+            transakcja.setSprzet(tempSprzetzgubienie);
+        }
+        else if (wyborZgubienie > 0 && wyborZgubienie <= transakcja.getSprzet().size()){
+            tempSprzetzgubienie.get(wyborZgubienie).setStatus('z');
+            transakcja.setSprzet(tempSprzetzgubienie);
+        }
+        else{
+            System.out.println("Wybrana pozycja nie znajduje się na liscie.");
+        }
     }
 
 }
