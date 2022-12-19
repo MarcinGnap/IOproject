@@ -259,13 +259,13 @@ public class Aplikacja {
     public static void menuPosrednieKlienta(){
         for (; ;) {
             Scanner sck = new Scanner(System.in);
-            System.out.println("Wybierz opcje: " +
-                                "1. Marcin Gnap" +
-                                "2. Jakub Fajkowski" +
-                                "3. Dominik Gerlach" +
-                                "4. Klaudia Kowalska" +
-                                "5. Alicja Nowak" +
-                                "6. Powrot");
+            System.out.println("Wybierz opcje: \n" +
+                                "1. Marcin Gnap\n" +
+                                "2. Jakub Fajkowski\n" +
+                                "3. Dominik Gerlach\n" +
+                                "4. Klaudia Kowalska\n" +
+                                "5. Alicja Nowak\n" +
+                                "6. Powrot\n");
             int PK = sck.nextInt();
             int wyborPK = PK + 1;
             if (wyborPK > klienci.size() + 1 || wyborPK < klienci.size()){
@@ -283,13 +283,13 @@ public class Aplikacja {
     public static void menuPosredniePracownika(){
         for (; ;) {
             Scanner scp = new Scanner(System.in);
-            System.out.println("Wybierz opcje: " +
-                    "1. Martyna Wojciechowska" +
-                    "2. Grzegorz Brzeczyszczykiewicz" +
-                    "3. Julia Nowakowska" +
-                    "4. Henryk Garncarski" +
-                    "5. Edyta Kobieraj" +
-                    "6. Powrot");
+            System.out.println("Wybierz opcje: \n" +
+                    "1. Martyna Wojciechowska\n" +
+                    "2. Grzegorz Brzeczyszczykiewicz\n" +
+                    "3. Julia Nowakowska\n" +
+                    "4. Henryk Garncarski\n" +
+                    "5. Edyta Kobieraj\n" +
+                    "6. Powrot\n");
             int PK = scp.nextInt();
             int wyborPK = PK + 1;
             if (wyborPK > pracownicy.size() + 1 || wyborPK < pracownicy.size()){
@@ -308,13 +308,13 @@ public class Aplikacja {
         for (;;){
             Scanner sck = new Scanner(System.in);
             System.out.println("Wybierz opcje: \n" +
-                                "1. Wyswietlenie dostepnych ofert" +
-                                "2. Wypozyczenie wybranego produktu" +
-                                "3. Rezerwacja wybranego produktu" +
-                                "4. Przedluzenie wypozyczenia" +
-                                "5. Anulowanie rezerwacji" +
-                                "6. Zgloszenie zgubienia wypozyczonego produktu" +
-                                "7. Powrot");
+                                "1. Wyswietlenie dostepnych ofert\n" +
+                                "2. Wypozyczenie wybranego produktu\n" +
+                                "3. Rezerwacja wybranego produktu\n" +
+                                "4. Przedluzenie wypozyczenia\n" +
+                                "5. Anulowanie rezerwacji\n" +
+                                "6. Zgloszenie zgubienia wypozyczonego produktu\n" +
+                                "7. \n");
             int wyborKlienta = sck.nextInt();
             switch (wyborKlienta){
                 case 1:
@@ -432,11 +432,11 @@ public class Aplikacja {
         for (;;){
             Scanner scp = new Scanner(System.in);
             System.out.println("Wybierz opcje: \n" +
-                                "1. Stworzenie nowej oferty" +
-                                "2. Nakazanie zwrotu" +
-                                "3. Sprawdzenie historii wypozyczen" +
-                                "4. Sprawdzenie zalegania z oplatami" +
-                                "5. Powrot");
+                                "1. Stworzenie nowej oferty\n" +
+                                "2. Nakazanie zwrotu\n" +
+                                "3. Sprawdzenie historii wypozyczen\n" +
+                                "4. Sprawdzenie zalegania z oplatami\n" +
+                                "5. Powrot\n");
             int wyborPracownika = scp.nextInt();
             switch (wyborPracownika){
                 case 1:
