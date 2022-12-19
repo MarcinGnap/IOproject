@@ -6,10 +6,10 @@ import java.time.LocalDate;
 
 public class Aplikacja {
 
-    private Vector<Produkt> oferty = new Vector<>();
-    private Vector<Klient> klienci = new Vector<>();
-    private Vector<Pracownik> pracownicy = new Vector<>();
-    private Vector<Transakcja> transakcje = new Vector<>();
+    private static Vector<Produkt> oferty = new Vector<>();
+    private static Vector<Klient> klienci = new Vector<>();
+    private static Vector<Pracownik> pracownicy = new Vector<>();
+    private static Vector<Transakcja> transakcje = new Vector<>();
 
     public Aplikacja() {
         // TODO - implement Aplikacja.Aplikacja
@@ -177,7 +177,6 @@ public class Aplikacja {
             }
         }
         return prawdopodobnyKlient;
-        //throw new UnsupportedOperationException();
     }
 
     /**
@@ -236,10 +235,57 @@ public class Aplikacja {
             int wybor = sc.nextInt();
             switch (wybor) {
                 case 1:
+                    menuPosrednieKlienta();
+                    break;
+                case 2:
+                    menuPosredniePracownika();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Nie ma takiej opcji...");
+            }
+        }
+    }
+
+    public static void menuPosrednieKlienta(){
+        for (; ;) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wybierz opcje: " +
+                                "1. ");
+            int wybor = sc.nextInt();
+            switch (wybor) {
+                case 1:
                     menuKlienta();
                     break;
                 case 2:
-                    menuPracownika();
+                    menuPosredniePracownika();
+                    break;
+                case 3:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Nie ma takiej opcji...");
+            }
+        }
+    }
+
+    public static void menuPosredniePracownika(){
+        for (; ;) {
+            System.out.print("1. Klient\n" +
+                    "2. Pracownik\n" +
+                    "3. Wyjście\n");
+
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Wybierz opcje: ");
+            int wybor = sc.nextInt();
+            switch (wybor) {
+                case 1:
+                    menuPosrednieKlienta();
+                    break;
+                case 2:
+                    menuPosredniePracownika();
                     break;
                 case 3:
                     System.exit(0);
@@ -253,11 +299,43 @@ public class Aplikacja {
     public static void menuKlienta(){
         for (;;){
             Scanner sck = new Scanner(System.in);
-            System.out.println("Wybierz opcje: ");
+            System.out.println("Wybierz opcje: \n" +
+                                "1. Wyswietlenie dostepnych ofert" +
+                                "2. Wypozyczenie wybranego produktu" +
+                                "3. Rezerwacja wybranego produktu" +
+                                "4. Przedluzenie wypozyczenia" +
+                                "5. Anulowanie rezerwacji" +
+                                "6. Zgloszenie zgubienia wypozyczonego produktu" +
+                                "7. Powrot");
             int wyborKlienta = sck.nextInt();
             switch (wyborKlienta){
                 case 1:
+                    System.out.println("Dostepne oferty: ");
+                    for (int k = 0; k < oferty.size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". " + oferty.get(k).getNazwa() + " x " + oferty.get(k).getDostepny());
+                    }
                     break;
+                case 2:
+                    System.out.println("Wybierz numer produktu, ktory chcesz wypozyczyc: ");
+                    Scanner scNumerProduktu = new Scanner(System.in);
+                    int wyborWypozyczenie = scNumerProduktu.nextInt();
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+                    return;
                 default:
                     System.out.println("Nie ma takiej opcji...");
             }
@@ -267,11 +345,31 @@ public class Aplikacja {
     public static void menuPracownika(){
         for (;;){
             Scanner scp = new Scanner(System.in);
-            System.out.println("Wybierz opcje: ");
+            System.out.println("Wybierz opcje: \n" +
+                                "1. Stworzenie nowej oferty" +
+                                "2. Nakazanie zwrotu" +
+                                "3. Sprawdzenie historii wypozyczen" +
+                                "5. Sprawdzenie zalegania z oplatami" +
+                                "6. Powrot");
             int wyborPracownika = scp.nextInt();
             switch (wyborPracownika){
                 case 1:
+
                     break;
+                case 2:
+
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+                    return;
                 default:
                     System.out.println("Nie ma takiej opcji...");
             }

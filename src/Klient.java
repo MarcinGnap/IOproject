@@ -1,5 +1,6 @@
 import java.lang.String;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
@@ -77,13 +78,25 @@ public class Klient extends Osoba {
     public Vector<LocalDate> wypozyczenieKlienta(Produkt produkt) {
         // TODO - implement Klient.wypozyczenieKlienta
         Vector<LocalDate> data = new Vector<>();
-        Scanner screzerwacja = new Scanner(System.in);
-        System.out.println("Podaj dzisiejsza date (YYYY-MM-DD): ");
-        String wyborKlientaPocz = screzerwacja.next();
-        LocalDate dataPocz = LocalDate.parse(wyborKlientaPocz);
-        System.out.println("Podaj przwidywana date konca wypozyczenia (YYYY-MM-DD): ");
-        String wyborKlientaKon = screzerwacja.next();
-        LocalDate dataKonca = LocalDate.parse(wyborKlientaKon);
+        Scanner screzerwacjarok = new Scanner(System.in);
+        Scanner screzerwacjamiesiac = new Scanner(System.in);
+        Scanner screzerwacjadzien = new Scanner(System.in);
+        System.out.println("Podaj dzisiejsza date: ");
+        System.out.println("Podaj rok: ");
+        int rok = screzerwacjarok.nextInt();
+        System.out.println("Podaj miesiac (liczbowo): ");
+        int miesiac = screzerwacjamiesiac.nextInt();
+        System.out.println("Podaj dzien: ");
+        int dzien = screzerwacjadzien.nextInt();
+        LocalDate dataPocz = LocalDate.of(rok, miesiac, dzien);
+        System.out.println("Podaj przwidywana date konca wypozyczenia: ");
+        System.out.println("Podaj rok: ");
+        rok = screzerwacjarok.nextInt();
+        System.out.println("Podaj miesiac (liczbowo): ");
+        miesiac = screzerwacjamiesiac.nextInt();
+        System.out.println("Podaj dzien: ");
+        dzien = screzerwacjadzien.nextInt();
+        LocalDate dataKonca = LocalDate.of(rok, miesiac, dzien);
         data.add(dataPocz);
         data.add(dataKonca);
 
