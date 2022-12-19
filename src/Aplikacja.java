@@ -85,30 +85,33 @@ public class Aplikacja {
      * @param cena
      * @param nazwa
      */
-    public Vector<Produkt> wyszukajProdukt(String nazwa, float cena, int dostep) {
-        Vector<Produkt> wyszukaneProdukty = oferty;
+    public static Vector<Integer> wyszukajProdukt(String nazwa, float cena, int dostep) {
+        Vector<Integer> indeksyProduktow = new Vector<Integer>();
+        for (int index = 0; index < oferty.size(); index++){
+            indeksyProduktow.add(index);
+        }
         if(nazwa != null){
-            for(int x = 0; x < wyszukaneProdukty.size(); x++){
-                if (nazwa != wyszukaneProdukty.get(x).getNazwa()){
-                    wyszukaneProdukty.remove(x);
+            for(int x = 0; x < oferty.size(); x++){
+                if (nazwa != oferty.get(x).getNazwa()){
+                    indeksyProduktow.remove(x);
                 }
             }
         }
         if(cena > 0){
-            for(int x = 0; x < wyszukaneProdukty.size(); x++){
-                if (cena > wyszukaneProdukty.get(x).getCena()){
-                    wyszukaneProdukty.remove(x);
+            for(int x = 0; x < oferty.size(); x++){
+                if (cena > oferty.get(x).getCena()){
+                    indeksyProduktow.remove(x);
                 }
             }
         }
         if(dostep > 0){
-            for(int x = 0; x < wyszukaneProdukty.size(); x++){
-                if (dostep > wyszukaneProdukty.get(x).getDostepny()){
-                    wyszukaneProdukty.remove(x);
+            for(int x = 0; x < oferty.size(); x++){
+                if (dostep > oferty.get(x).getDostepny()){
+                    indeksyProduktow.remove(x);
                 }
             }
         }
-        return wyszukaneProdukty;
+        return indeksyProduktow;
     }
 
     /**
@@ -406,7 +409,14 @@ public class Aplikacja {
             switch (wyborPracownika){
                 case 1:
                     Produkt nowyProdukt = pracownicy.get(pracownik).stworzOferte();
-
+                    Vector<Integer> indeksy = new Vector<Integer>();
+                    indeksy = wyszukajProdukt(nowyProdukt.getNazwa(), nowyProdukt.getCena(), 0);
+                    if (indeksy.size() != 0){
+                        oferty.get(indeksy.get(0)).setDostepny(oferty.get(indeksy.get(0)).getDostepny() + nowyProdukt.getDostepny());
+                    }
+                    else {
+                        oferty.add(nowyProdukt);
+                    }
                     break;
                 case 2:
 
