@@ -137,11 +137,6 @@ public class Aplikacja {
         return false;
     }
 
-    /**
-     *
-     * @param produkt
-     * @param ilosc
-     */
     public boolean sprawdzDostepnoscIlosci(Produkt produkt, int ilosc) {
         if (ilosc < produkt.getDostepny()){
             return false;
@@ -151,12 +146,6 @@ public class Aplikacja {
         }
     }
 
-    /**
-     *
-     * @param nazwisko
-     * @param pesel
-     * @param imie
-     */
     public Vector<Klient> wyszukajKlienta(String imie, String nazwisko, float pesel) {
         Vector<Klient> prawdopodobnyKlient = klienci;
         if(imie != null){
@@ -183,12 +172,6 @@ public class Aplikacja {
         return prawdopodobnyKlient;
     }
 
-    /**
-     *
-     * @param dataPoczatku
-     * @param dataKonca
-     * @param sprzet
-     */
     public static Vector<Transakcja> wyszukajTransakcja(LocalDate dataPoczatku, LocalDate dataKonca, Vector<Produkt> sprzet) {
         Vector<Transakcja> tempTransakcje = new Vector<>();
         for (int g = 0; g < klienci.size(); g++){

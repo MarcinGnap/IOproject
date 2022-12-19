@@ -6,14 +6,6 @@ public class Pracownik extends Osoba {
 
     private String stanowisko;
 
-    /**
-     *
-     * @param imie
-     * @param nazwisko
-     * @param pesel
-     * @param numerTel
-     * @param email
-     */
     public Pracownik(String imie, String nazwisko, long pesel, float numerTel, String email, String stanowisko) {
         setImie(imie);
         setNazwisko(nazwisko);
@@ -27,16 +19,11 @@ public class Pracownik extends Osoba {
         return this.stanowisko;
     }
 
-    /**
-     *
-     * @param stanowisko
-     */
     public void setStanowisko(String stanowisko) {
         this.stanowisko = stanowisko;
     }
 
     public Produkt stworzOferte() {
-        // TODO - implement Pracownik.stworzOferte
         Scanner scOferta = new Scanner(System.in);
         System.out.println("Wpisz nazwe: ");
         String nazwa = scOferta.next();
@@ -51,20 +38,6 @@ public class Pracownik extends Osoba {
         return nowyProdukt;
     }
 
-    /**
-     *
-     * @param produkt
-     */
-    /*
-    public boolean finalizacjaWypozyczenia(Produkt produkt) {
-        // TODO - implement Pracownik.finalizacjaWypozyczenia
-        throw new UnsupportedOperationException();
-    }*/
-
-    /**
-     *
-     * @param transakcja
-     */
     public void nakazZwrotu(Transakcja transakcja) {
         // TODO - implement Pracownik.nakazZwrotu
         szczegoly(transakcja);
@@ -87,23 +60,7 @@ public class Pracownik extends Osoba {
         }
     }
 
-    /**
-     *
-     * @param transakcja
-     * @param okresCzasu
-     */
-    /*
-    public boolean przedluzenieFinalizacja(Transakcja transakcja, String okresCzasu) {
-        // TODO - implement Pracownik.przedluzenieFinalizacja
-        throw new UnsupportedOperationException();
-    }*/
-
-    /**
-     *
-     * @param klientHistoria
-     */
     public void sprawdzHistorie(Klient klientHistoria) {
-        // TODO - implement Pracownik.sprawdzHistorie
         System.out.println("Wszystkie wypozyczenia wybranego klienta: ");
         for (int j = 0; j < klientHistoria.getZakupy().size(); j++){
             int a = j + 1;
@@ -127,12 +84,7 @@ public class Pracownik extends Osoba {
         }
     }
 
-    /**
-     *
-     * @param transakcja
-     */
     public void szczegoly(Transakcja transakcja) {
-        // TODO - implement Pracownik.szczegoly
         Vector<Produkt> tempSprzet = transakcja.getSprzet();
         System.out.println("Klient: ");
         for (int i = 0; i < tempSprzet.size(); i++){
@@ -147,12 +99,7 @@ public class Pracownik extends Osoba {
         System.out.println("Doplata: " + transakcja.getDoplata() + " zl");
     }
 
-    /**
-     *
-     * @param transakcja
-     */
     public void sprawdzDoplate(Transakcja transakcja) {
-        // TODO - implement Pracownik.sprawdzDoplate
         System.out.println("Aktualna doplata wynosi: " + transakcja.getDoplata() + " zl");
     }
 

@@ -1,7 +1,5 @@
 import java.lang.String;
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -36,7 +34,6 @@ public class Klient extends Osoba {
 
 
     public Vector<LocalDate> okresCzasuKlienta(Produkt produkt) {
-        // TODO - implement Klient.wypozyczenieKlienta
         Vector<LocalDate> data = new Vector<>();
         Scanner screzerwacjarok = new Scanner(System.in);
         Scanner screzerwacjamiesiac = new Scanner(System.in);
@@ -64,7 +61,6 @@ public class Klient extends Osoba {
     }
 
     public void przedluzenie(int indeksTransakcji, LocalDate nowaDataKonca) {
-        // TODO - implement Klient.przedluzenie
         zakupy.get(indeksTransakcji).setDataKonca(nowaDataKonca);
     }
 
@@ -79,7 +75,6 @@ public class Klient extends Osoba {
     }
 
     public void zgubienie(Transakcja transakcja) {
-        // TODO - implement Klient.zgubienie
         Vector<Produkt> tempSprzetzgubienie = transakcja.getSprzet();
         System.out.println("Wybierz produkt, ktory zostal zgubiony (jesli wszystkie wybierz 0): ");
         Scanner scZgubienie = new Scanner(System.in);

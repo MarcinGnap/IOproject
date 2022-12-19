@@ -12,10 +12,6 @@ public abstract class Osoba{
         return this.imie;
     }
 
-    /**
-     *
-     * @param imie
-     */
     public void setImie(String imie) {
         this.imie = imie;
     }
@@ -24,10 +20,6 @@ public abstract class Osoba{
         return this.nazwisko;
     }
 
-    /**
-     *
-     * @param nazwisko
-     */
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
     }
@@ -36,10 +28,6 @@ public abstract class Osoba{
         return this.pesel;
     }
 
-    /**
-     *
-     * @param pesel
-     */
     public void setPesel(long pesel) {
         this.pesel = pesel;
     }
@@ -48,10 +36,6 @@ public abstract class Osoba{
         return this.numerTel;
     }
 
-    /**
-     *
-     * @param numerTel
-     */
     public void setNumerTel(float numerTel) {
         this.numerTel = numerTel;
     }
@@ -60,10 +44,6 @@ public abstract class Osoba{
         return this.email;
     }
 
-    /**
-     *
-     * @param email
-     */
     public void setEmail(String email) {
         this.email = email;
     }

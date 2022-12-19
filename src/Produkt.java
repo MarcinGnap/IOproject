@@ -7,11 +7,6 @@ public class Produkt {
     private int dostepny;
     private char status;
 
-    /**
-     *
-     * @param nazwa
-     * @param cena
-     */
     public Produkt(String nazwa, float cena) {
         this.nazwa = nazwa;
         setCena(cena);
@@ -32,10 +27,6 @@ public class Produkt {
         return this.cena;
     }
 
-    /**
-     *
-     * @param cena
-     */
     public void setCena(float cena) {
         this.cena = cena;
     }
@@ -44,10 +35,6 @@ public class Produkt {
         return this.dostepny;
     }
 
-    /**
-     *
-     * @param dostepny
-     */
     public void setDostepny(int dostepny) {
         this.dostepny = dostepny;
     }
@@ -56,10 +43,6 @@ public class Produkt {
         return this.status;
     }
 
-    /**
-     *
-     * @param status
-     */
     public void setStatus(char status) {
         this.status = status;
     }
