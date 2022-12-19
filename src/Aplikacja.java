@@ -268,7 +268,7 @@ public class Aplikacja {
                                 "6. Powrot\n");
             int PK = sck.nextInt();
             int wyborPK = PK + 1;
-            if (wyborPK > klienci.size() + 1 || wyborPK < klienci.size()){
+            if (wyborPK > klienci.size() + 1 || wyborPK < 0){
                 System.out.println("Nie ma takiej opcji...");
             }
             else if (wyborPK == klienci.size() + 1) {
@@ -291,8 +291,8 @@ public class Aplikacja {
                     "5. Edyta Kobieraj\n" +
                     "6. Powrot\n");
             int PK = scp.nextInt();
-            int wyborPK = PK + 1;
-            if (wyborPK > pracownicy.size() + 1 || wyborPK < pracownicy.size()){
+            int wyborPK = PK - 1;
+            if (wyborPK > pracownicy.size() + 1 || wyborPK < 0){
                 System.out.println("Nie ma takiej opcji...");
             }
             else if (wyborPK == pracownicy.size() + 1) {
