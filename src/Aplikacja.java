@@ -120,7 +120,7 @@ public class Aplikacja {
      * @param dataPocz
      * @param dataKonca
      */
-    public boolean sprawdzKolidacje(Produkt pozadanyProdukt, LocalDate dataPocz, LocalDate dataKonca) {
+    public static boolean sprawdzKolidacje(Produkt pozadanyProdukt, LocalDate dataPocz, LocalDate dataKonca) {
         if(pozadanyProdukt != null){
             Vector<Produkt> pozadanaOferta = new Vector<>();
             pozadanaOferta.add(pozadanyProdukt);
@@ -189,36 +189,36 @@ public class Aplikacja {
      * @param dataKonca
      * @param sprzet
      */
-    public Vector<Transakcja> wyszukajTransakcja(LocalDate dataPoczatku, LocalDate dataKonca, Vector<Produkt> sprzet) {
+    public static Vector<Transakcja> wyszukajTransakcja(LocalDate dataPoczatku, LocalDate dataKonca, Vector<Produkt> sprzet) {
         Vector<Transakcja> tempTransakcje = new Vector<>();
         for (int g = 0; g < klienci.size(); g++){
-            for (int h = 0; h < klienci.get(g); )
+            for (int h = 0; h < klienci.get(g).getZakupy().size(); h++){
+                tempTransakcje.add(klienci.get(g).getZakupy().get(h));
+            }
         }
-        Vector<Transakcja> mozliweTransakcje = transakcje;
         if(dataPoczatku != null){
-            for(int x = 0; x < mozliweTransakcje.size(); x++){
-                if (dataPoczatku != mozliweTransakcje.get(x).getDataPaczatku()){
-                    mozliweTransakcje.remove(x);
+            for(int x = 0; x < tempTransakcje.size(); x++){
+                if (dataPoczatku != tempTransakcje.get(x).getDataPaczatku()){
+                    tempTransakcje.remove(x);
                 }
             }
         }
         if(dataKonca != null){
-            for(int x = 0; x < mozliweTransakcje.size(); x++){
-                if (dataKonca != mozliweTransakcje.get(x).getDataKonca()){
-                    mozliweTransakcje.remove(x);
+            for(int x = 0; x < tempTransakcje.size(); x++){
+                if (dataKonca != tempTransakcje.get(x).getDataKonca()){
+                    tempTransakcje.remove(x);
                 }
             }
         }
         if(sprzet != null){
-            for(int x = 0; x < mozliweTransakcje.size(); x++){
-                if (sprzet != mozliweTransakcje.get(x).getSprzet()){
-                    mozliweTransakcje.remove(x);
+            for(int x = 0; x < tempTransakcje.size(); x++){
+                if (sprzet != tempTransakcje.get(x).getSprzet()){
+                    tempTransakcje.remove(x);
                 }
             }
         }
-        return mozliweTransakcje;
+        return tempTransakcje;
     }
-
 
     public void wyswietlWszystkieOferty(){
         System.out.println("Aktualnie dostepne produkty: ");
@@ -230,7 +230,6 @@ public class Aplikacja {
             }
         }
     }
-
 
     public static void menu(){
         for (; ;) {
@@ -374,7 +373,12 @@ public class Aplikacja {
                     int dzien = scKoniecDzien.nextInt();
                     LocalDate nowaDataKonca = LocalDate.of(rok, miesiac, dzien);
 
-                    klienci.get(klient).przedluzenie(wyborPrzedluzenie, nowaDataKonca);
+                    if (sprawdzKolidacje(klienci.get(klient).getZakupy().get(wyborPrzedluzenie).getSprzet().get(0), klienci.get(klient).getZakupy().get(wyborPrzedluzenie).getDataPaczatku(), nowaDataKonca)){
+                        System.out.println("Nie mozna przedluzyc wypozyczenia...");
+                    }
+                    else {
+                        klienci.get(klient).przedluzenie(wyborPrzedluzenie, nowaDataKonca);
+                    }
                     break;
                 case 5:
                     System.out.println("Twoje transakcje: ");
