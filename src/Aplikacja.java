@@ -190,6 +190,10 @@ public class Aplikacja {
      * @param sprzet
      */
     public Vector<Transakcja> wyszukajTransakcja(LocalDate dataPoczatku, LocalDate dataKonca, Vector<Produkt> sprzet) {
+        Vector<Transakcja> tempTransakcje = new Vector<>();
+        for (int g = 0; g < klienci.size(); g++){
+            for (int h = 0; h < klienci.get(g); )
+        }
         Vector<Transakcja> mozliweTransakcje = transakcje;
         if(dataPoczatku != null){
             for(int x = 0; x < mozliweTransakcje.size(); x++){
@@ -328,7 +332,7 @@ public class Aplikacja {
                     Vector<Produkt> zamowienie = new Vector<>();
                     zamowienie.add(oferty.get(wyborWypozyczenie - 1));
                     oferty.get(wyborWypozyczenie - 1).setDostepny(oferty.get(wyborWypozyczenie - 1).getDostepny() - 1);
-                    Vector<LocalDate> dataWypozyczenia = klienci.get(klient).wypozyczenieKlienta(oferty.get(wyborWypozyczenie));
+                    Vector<LocalDate> dataWypozyczenia = klienci.get(klient).okresCzasuKlienta(oferty.get(wyborWypozyczenie));
 
                     Transakcja transakcja = new Transakcja(dataWypozyczenia.get(0), dataWypozyczenia.get(1), 0, zamowienie, 0);
                     klienci.get(klient).dodajTransakcje(transakcja);
@@ -340,13 +344,37 @@ public class Aplikacja {
                     Vector<Produkt> rezerwacja = new Vector<>();
                     rezerwacja.add(oferty.get(wyborRezerwacja - 1));
                     oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
-                    Vector<LocalDate> dataRezerwacji = klienci.get(klient).rezerwacja(oferty.get(wyborRezerwacja));
-
+                    Vector<LocalDate> dataRezerwacji = klienci.get(klient).okresCzasuKlienta(oferty.get(wyborRezerwacja));
+// TODO kolidacja z innymi rezerwacjami
                     Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
                     klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
                     break;
                 case 4:
+                    System.out.println("Twoje transakcje: ");
+                    for (int k = 0; k < klienci.get(klient).getZakupy().size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". ");
+                        for (int kns = 0; kns < klienci.get(klient).getZakupy().get(k).getSprzet().size(); kns++) {
+                            System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                        }
+                    }
+                    System.out.println("Wybierz transakcje, ktora chcesz przedluzyc: ");
+                    Scanner scPrzedluzenie = new Scanner(System.in);
+                    int wyborPrzedluzenie = scPrzedluzenie.nextInt() - 1;
 
+                    Scanner scKoniecRok = new Scanner(System.in);
+                    Scanner scKoniecMiesiac = new Scanner(System.in);
+                    Scanner scKoniecDzien = new Scanner(System.in);
+                    System.out.println("Podaj nowa date koncowa: ");
+                    System.out.println("Podaj rok: ");
+                    int rok = scKoniecRok.nextInt();
+                    System.out.println("Podaj miesiac (liczbowo): ");
+                    int miesiac = scKoniecMiesiac.nextInt();
+                    System.out.println("Podaj dzien: ");
+                    int dzien = scKoniecDzien.nextInt();
+                    LocalDate nowaDataKonca = LocalDate.of(rok, miesiac, dzien);
+
+                    klienci.get(klient).przedluzenie(wyborPrzedluzenie, nowaDataKonca);
                     break;
                 case 5:
                     System.out.println("Twoje transakcje: ");
@@ -366,12 +394,12 @@ public class Aplikacja {
                     Scanner screzerwacjadzien = new Scanner(System.in);
                     System.out.println("Podaj dzisiejsza date: ");
                     System.out.println("Podaj rok: ");
-                    int rok = screzerwacjarok.nextInt();
+                    int rokr = screzerwacjarok.nextInt();
                     System.out.println("Podaj miesiac (liczbowo): ");
-                    int miesiac = screzerwacjamiesiac.nextInt();
+                    int miesiacr = screzerwacjamiesiac.nextInt();
                     System.out.println("Podaj dzien: ");
-                    int dzien = screzerwacjadzien.nextInt();
-                    LocalDate dataDzisiaj = LocalDate.of(rok, miesiac, dzien);
+                    int dzienr = screzerwacjadzien.nextInt();
+                    LocalDate dataDzisiaj = LocalDate.of(rokr, miesiacr, dzienr);
                     klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
                     break;
                 case 6:

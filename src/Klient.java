@@ -8,16 +8,7 @@ import java.util.Vector;
 public class Klient extends Osoba {
 
     private Vector<Transakcja> zakupy = new Vector<>();
-    private Vector<Produkt> oferty = new Vector<>();
 
-    /**
-     *
-     * @param imie
-     * @param nazwisko
-     * @param pesel
-     * @param numerTel
-     * @param email
-     */
     public Klient(String imie, String nazwisko, long pesel, float numerTel, String email) {
         setImie(imie);
         setNazwisko(nazwisko);
@@ -39,43 +30,12 @@ public class Klient extends Osoba {
         return this.zakupy;
     }
 
-    /**
-     *
-     * @param zakupy
-     */
     public void setZakupy(Vector<Transakcja> zakupy) {
         this.zakupy = zakupy;
     }
 
-    public Vector<Produkt> getOferty() {
-        return oferty;
-    }
 
-    /**
-     *
-     * @param produkt
-     */
-    public Vector<LocalDate> rezerwacja(Produkt produkt) {
-        // TODO - implement Klient.rezerwacja
-        Vector<LocalDate> data = new Vector<>();
-        Scanner screzerwacja = new Scanner(System.in);
-        System.out.println("Podaj date poczatku wypozyczenia (YYYY-MM-DD): ");
-        String wyborKlientaPocz = screzerwacja.next();
-        LocalDate dataPocz = LocalDate.parse(wyborKlientaPocz);
-        System.out.println("Podaj date konca wypozyczenia (YYYY-MM-DD): ");
-        String wyborKlientaKon = screzerwacja.next();
-        LocalDate dataKonca = LocalDate.parse(wyborKlientaKon);
-        data.add(dataPocz);
-        data.add(dataKonca);
-
-        return data;
-    }
-
-    /**
-     *
-     * @param produkt
-     */
-    public Vector<LocalDate> wypozyczenieKlienta(Produkt produkt) {
+    public Vector<LocalDate> okresCzasuKlienta(Produkt produkt) {
         // TODO - implement Klient.wypozyczenieKlienta
         Vector<LocalDate> data = new Vector<>();
         Scanner screzerwacjarok = new Scanner(System.in);
@@ -103,22 +63,11 @@ public class Klient extends Osoba {
         return data;
     }
 
-    /**
-     *
-     * @param transakcja
-     * @param okresCzasu
-     */
-    public boolean przedluzenie(Transakcja transakcja, String okresCzasu) {
+    public void przedluzenie(int indeksTransakcji, LocalDate nowaDataKonca) {
         // TODO - implement Klient.przedluzenie
-        // z menu klienta?
-        throw new UnsupportedOperationException();
+        zakupy.get(indeksTransakcji).setDataKonca(nowaDataKonca);
     }
 
-    /**
-     *
-     * @param aktualnaData
-     * @param transakcja
-     */
     public boolean anulujRezerwacje(Transakcja transakcja, LocalDate aktualnaData) {
         if (aktualnaData.isBefore(transakcja.getDataPaczatku())){
             zakupy.remove(transakcja);
@@ -129,10 +78,6 @@ public class Klient extends Osoba {
         }
     }
 
-    /**
-     *
-     * @param transakcja
-     */
     public void zgubienie(Transakcja transakcja) {
         // TODO - implement Klient.zgubienie
         Vector<Produkt> tempSprzetzgubienie = transakcja.getSprzet();
