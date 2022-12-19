@@ -154,4 +154,8 @@ public class Klient extends Osoba {
         }
     }
 
+    public void dodajTransakcje(Transakcja transakcja){
+        zakupy.add(transakcja);
+    }
+
 }

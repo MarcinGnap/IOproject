@@ -1,3 +1,4 @@
+import javax.xml.stream.events.ProcessingInstruction;
 import java.lang.String;
 import java.time.Month;
 import java.util.Scanner;
@@ -251,52 +252,53 @@ public class Aplikacja {
 
     public static void menuPosrednieKlienta(){
         for (; ;) {
-            Scanner sc = new Scanner(System.in);
+            Scanner sck = new Scanner(System.in);
             System.out.println("Wybierz opcje: " +
-                                "1. ");
-            int wybor = sc.nextInt();
-            switch (wybor) {
-                case 1:
-                    menuKlienta();
-                    break;
-                case 2:
-                    menuPosredniePracownika();
-                    break;
-                case 3:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Nie ma takiej opcji...");
+                                "1. Marcin Gnap" +
+                                "2. Jakub Fajkowski" +
+                                "3. Dominik Gerlach" +
+                                "4. Klaudia Kowalska" +
+                                "5. Alicja Nowak" +
+                                "6. Powrot");
+            int PK = sck.nextInt();
+            int wyborPK = PK + 1;
+            if (wyborPK > klienci.size() + 1 || wyborPK < klienci.size()){
+                System.out.println("Nie ma takiej opcji...");
+            }
+            else if (wyborPK == klienci.size() + 1) {
+                return;
+            }
+            else {
+                menuKlienta(wyborPK-1);
             }
         }
     }
 
     public static void menuPosredniePracownika(){
         for (; ;) {
-            System.out.print("1. Klient\n" +
-                    "2. Pracownik\n" +
-                    "3. Wyjście\n");
-
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Wybierz opcje: ");
-            int wybor = sc.nextInt();
-            switch (wybor) {
-                case 1:
-                    menuPosrednieKlienta();
-                    break;
-                case 2:
-                    menuPosredniePracownika();
-                    break;
-                case 3:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Nie ma takiej opcji...");
+            Scanner scp = new Scanner(System.in);
+            System.out.println("Wybierz opcje: " +
+                    "1. Martyna Wojciechowska" +
+                    "2. Grzegorz Brzeczyszczykiewicz" +
+                    "3. Julia Nowakowska" +
+                    "4. Henryk Garncarski" +
+                    "5. Edyta Kobieraj" +
+                    "6. Powrot");
+            int PK = scp.nextInt();
+            int wyborPK = PK + 1;
+            if (wyborPK > pracownicy.size() + 1 || wyborPK < pracownicy.size()){
+                System.out.println("Nie ma takiej opcji...");
+            }
+            else if (wyborPK == pracownicy.size() + 1) {
+                return;
+            }
+            else {
+                menuPracownika(wyborPK-1);
             }
         }
     }
 
-    public static void menuKlienta(){
+    public static void menuKlienta(int klient){
         for (;;){
             Scanner sck = new Scanner(System.in);
             System.out.println("Wybierz opcje: \n" +
@@ -320,10 +322,25 @@ public class Aplikacja {
                     System.out.println("Wybierz numer produktu, ktory chcesz wypozyczyc: ");
                     Scanner scNumerProduktu = new Scanner(System.in);
                     int wyborWypozyczenie = scNumerProduktu.nextInt();
+                    Vector<Produkt> zamowienie = new Vector<>();
+                    zamowienie.add(oferty.get(wyborWypozyczenie - 1));
+                    oferty.get(wyborWypozyczenie - 1).setDostepny(oferty.get(wyborWypozyczenie - 1).getDostepny() - 1);
+                    Vector<LocalDate> dataWypozyczenia = klienci.get(klient).wypozyczenieKlienta(oferty.get(wyborWypozyczenie));
 
+                    Transakcja transakcja = new Transakcja(dataWypozyczenia.get(0), dataWypozyczenia.get(1), 0, zamowienie, 0);
+                    klienci.get(klient).dodajTransakcje(transakcja);
                     break;
                 case 3:
+                    System.out.println("Wybierz numer produktu, ktory chcesz zarezerwowac: ");
+                    Scanner scNumerProduktuRezerwacja = new Scanner(System.in);
+                    int wyborRezerwacja = scNumerProduktuRezerwacja.nextInt();
+                    Vector<Produkt> rezerwacja = new Vector<>();
+                    rezerwacja.add(oferty.get(wyborRezerwacja - 1));
+                    oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
+                    Vector<LocalDate> dataRezerwacji = klienci.get(klient).rezerwacja(oferty.get(wyborRezerwacja));
 
+                    Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
+                    klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
                     break;
                 case 4:
 
@@ -332,7 +349,18 @@ public class Aplikacja {
 
                     break;
                 case 6:
-
+                    System.out.println("Twoje transakcje: ");
+                    for (int k = 0; k < klienci.get(klient).getZakupy().size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". ");
+                        for (int kns = 0; kns < klienci.get(klient).getZakupy().get(k).getSprzet().size(); kns++) {
+                            System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                        }
+                    }
+                    System.out.println("Wybierz zgubiony produkt: ");
+                    Scanner scZgubienie = new Scanner(System.in);
+                    int wyborZgubienie = scZgubienie.nextInt();
+                    klienci.get(klient).zgubienie(klienci.get(klient).getZakupy().get(wyborZgubienie - 1));
                     break;
                 case 7:
                     return;
@@ -342,7 +370,7 @@ public class Aplikacja {
         }
     }
 
-    public static void menuPracownika(){
+    public static void menuPracownika(int pracownik){
         for (;;){
             Scanner scp = new Scanner(System.in);
             System.out.println("Wybierz opcje: \n" +
