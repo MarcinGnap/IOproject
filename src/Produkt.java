@@ -17,6 +17,13 @@ public class Produkt {
         setCena(cena);
     }
 
+    public Produkt(String nazwa, float cena, int dostepny, char status) {
+        this.nazwa = nazwa;
+        setCena(cena);
+        setDostepny(dostepny);
+        setStatus(status);
+    }
+
     public String getNazwa() {
         return this.nazwa;
     }

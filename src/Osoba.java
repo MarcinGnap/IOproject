@@ -4,7 +4,7 @@ public abstract class Osoba{
 
     private String imie;
     private String nazwisko;
-    private float pesel;
+    private long pesel;
     private float numerTel;
     private String email;
 
@@ -40,7 +40,7 @@ public abstract class Osoba{
      *
      * @param pesel
      */
-    public void setPesel(float pesel) {
+    public void setPesel(long pesel) {
         this.pesel = pesel;
     }
 

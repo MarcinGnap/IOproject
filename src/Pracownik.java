@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Pracownik extends Osoba {
 
-    private char stanowisko;
+    private String stanowisko;
 
     /**
      *
@@ -14,7 +14,7 @@ public class Pracownik extends Osoba {
      * @param numerTel
      * @param email
      */
-    public Pracownik(String imie, String nazwisko, float pesel, float numerTel, String email, char stanowisko) {
+    public Pracownik(String imie, String nazwisko, long pesel, float numerTel, String email, String stanowisko) {
         setImie(imie);
         setNazwisko(nazwisko);
         setPesel(pesel);
@@ -23,7 +23,7 @@ public class Pracownik extends Osoba {
         setStanowisko(stanowisko);
     }
 
-    public char getStanowisko() {
+    public String getStanowisko() {
         return this.stanowisko;
     }
 
@@ -31,7 +31,7 @@ public class Pracownik extends Osoba {
      *
      * @param stanowisko
      */
-    public void setStanowisko(char stanowisko) {
+    public void setStanowisko(String stanowisko) {
         this.stanowisko = stanowisko;
     }
 

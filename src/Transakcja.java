@@ -22,6 +22,23 @@ public class Transakcja {
         this.sprzet = sprzet;
     }
 
+    /**
+     *
+     * @param dataPoczatku
+     * @param dataKonca
+     * @param koszt
+     * @param sprzet
+     * @param doplata
+     */
+
+    public Transakcja(LocalDate dataPoczatku, LocalDate dataKonca, float koszt, Vector<Produkt> sprzet, float doplata) {
+        setDataPaczatku(dataPoczatku);
+        setDataKonca(dataKonca);
+        setKosztPocz(koszt);
+        this.sprzet = sprzet;
+        setDoplata(doplata);
+    }
+
     public LocalDate getDataPaczatku() {
         return this.dataPaczatku;
     }

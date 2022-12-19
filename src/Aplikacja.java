@@ -1,4 +1,5 @@
 import java.lang.String;
+import java.time.Month;
 import java.util.Scanner;
 import java.util.Vector;
 import java.time.LocalDate;
@@ -12,7 +13,63 @@ public class Aplikacja {
 
     public Aplikacja() {
         // TODO - implement Aplikacja.Aplikacja
-        //throw new UnsupportedOperationException();
+        Produkt produkt1 = new Produkt("Rower", 20, 3, 'd');
+        Produkt produkt2 = new Produkt("Kije trekkingowe", 15, 1, 'd');
+        Produkt produkt3 = new Produkt("Kask", 5, 0, 'z');
+        Produkt produkt4 = new Produkt("Lodz", 500, 0, 'w');
+        Produkt produkt5 = new Produkt("Kajak", 200, 0, 'n');
+        oferty.add(produkt1);
+        oferty.add(produkt2);
+        oferty.add(produkt3);
+        oferty.add(produkt4);
+        oferty.add(produkt5);
+
+        Klient klient1 = new Klient("Marcin", "Gnap", 12345678911l, 123456789, "email@email.email");
+        Klient klient2 = new Klient("Jakub", "Fajkowski", 11987654321l, 123456798, "amail@email.email");
+        Klient klient3 = new Klient("Dominik", "Gerlach", 11234567890l, 213456789, "bmail@email.email");
+        Klient klient4 = new Klient("Klaudia", "Kowalska", 10230456789l, 124356789, "cmail@email.email");
+        Klient klient5 = new Klient("Alicja", "Nowak", 54789632100l, 123457689, "dmail@email.email");
+        klienci.add(klient1);
+        klienci.add(klient2);
+        klienci.add(klient3);
+        klienci.add(klient4);
+        klienci.add(klient5);
+
+        Pracownik pracownik1 = new Pracownik("Martyna", "Wojciechowska", 56321478963l, 963258741, "pmail@email.email", "Wlasciciel");
+        Pracownik pracownik2 = new Pracownik("Grzegorz", "Brzeczyszczykiewicz", 32145698741l, 147852369, "omail@email.email", "Manager");
+        Pracownik pracownik3 = new Pracownik("Julia", "Nowakowska", 36985214789l, 632589741, "imail@email.email", "Ksiegowy");
+        Pracownik pracownik4 = new Pracownik("Henryk", "Garncarski", 85214789632l, 578963214, "umail@email.email", "Ekspedient");
+        Pracownik pracownik5 = new Pracownik("Edyta", "Kobieraj", 23654125879l, 653214987, "ymail@email.email", "Ekspedient");
+        pracownicy.add(pracownik1);
+        pracownicy.add(pracownik2);
+        pracownicy.add(pracownik3);
+        pracownicy.add(pracownik4);
+        pracownicy.add(pracownik5);
+
+        Vector<Produkt> oferty1 = new Vector<>();
+        oferty1.add(produkt4);
+        Transakcja transakcja1 = new Transakcja(LocalDate.of(2022, Month.MARCH, 12), LocalDate.of(2022, Month.MARCH, 16), 1000, oferty1, 1500);
+        transakcje.add(transakcja1);
+
+        Vector<Produkt> oferty2 = new Vector<>();
+        oferty2.add(produkt1);
+        Transakcja transakcja2 = new Transakcja(LocalDate.of(2022, Month.JULY, 4), LocalDate.of(2022, Month.JULY, 23), 300, oferty2, 100);
+        transakcje.add(transakcja2);
+
+        Vector<Produkt> oferty3 = new Vector<>();
+        oferty3.add(produkt2);
+        Transakcja transakcja3 = new Transakcja(LocalDate.of(2021, Month.DECEMBER, 20), LocalDate.of(2022, Month.JANUARY, 5), 255, oferty3, 0);
+        transakcje.add(transakcja3);
+
+        Vector<Produkt> oferty4 = new Vector<>();
+        oferty4.add(produkt3);
+        Transakcja transakcja4 = new Transakcja(LocalDate.of(2022, Month.JUNE, 10), LocalDate.of(2022, Month.JUNE, 11), 5, oferty4, 0);
+        transakcje.add(transakcja4);
+
+        Vector<Produkt> oferty5 = new Vector<>();
+        oferty5.add(produkt3);
+        Transakcja transakcja5 = new Transakcja(LocalDate.of(2022, Month.APRIL, 17), LocalDate.of(2022, Month.APRIL, 19), 5, oferty5, 5);
+        transakcje.add(transakcja5);
     }
 
     public static void main(String[] args) {

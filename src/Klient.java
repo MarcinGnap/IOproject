@@ -6,8 +6,8 @@ import java.util.Vector;
 
 public class Klient extends Osoba {
 
-    private ArrayList<Transakcja> zakupy = new ArrayList<Transakcja>();
-    private ArrayList<Produkt> oferty = new ArrayList<Produkt>();
+    private Vector<Transakcja> zakupy = new Vector<>();
+    private Vector<Produkt> oferty = new Vector<>();
 
     /**
      *
@@ -17,7 +17,7 @@ public class Klient extends Osoba {
      * @param numerTel
      * @param email
      */
-    public Klient(String imie, String nazwisko, float pesel, float numerTel, String email) {
+    public Klient(String imie, String nazwisko, long pesel, float numerTel, String email) {
         setImie(imie);
         setNazwisko(nazwisko);
         setPesel(pesel);
@@ -25,7 +25,16 @@ public class Klient extends Osoba {
         setEmail(email);
     }
 
-    public ArrayList<Transakcja> getZakupy() {
+    public Klient(String imie, String nazwisko, long pesel, float numerTel, String email, Vector<Transakcja> zakupy) {
+        setImie(imie);
+        setNazwisko(nazwisko);
+        setPesel(pesel);
+        setNumerTel(numerTel);
+        setEmail(email);
+        setZakupy(zakupy);
+    }
+
+    public Vector<Transakcja> getZakupy() {
         return this.zakupy;
     }
 
@@ -33,11 +42,11 @@ public class Klient extends Osoba {
      *
      * @param zakupy
      */
-    public void setZakupy(ArrayList<Transakcja> zakupy) {
+    public void setZakupy(Vector<Transakcja> zakupy) {
         this.zakupy = zakupy;
     }
 
-    public ArrayList<Produkt> getOferty() {
+    public Vector<Produkt> getOferty() {
         return oferty;
     }
 
