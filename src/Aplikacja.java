@@ -403,8 +403,8 @@ public class Aplikacja {
                                 "1. Stworzenie nowej oferty" +
                                 "2. Nakazanie zwrotu" +
                                 "3. Sprawdzenie historii wypozyczen" +
-                                "5. Sprawdzenie zalegania z oplatami" +
-                                "6. Powrot");
+                                "4. Sprawdzenie zalegania z oplatami" +
+                                "5. Powrot");
             int wyborPracownika = scp.nextInt();
             switch (wyborPracownika){
                 case 1:
@@ -439,15 +439,30 @@ public class Aplikacja {
                     pracownicy.get(pracownik).nakazZwrotu(klienci.get(wyborKlienta).getZakupy().get(wyborTransakcji));
                     break;
                 case 3:
-
+                    System.out.println("Wybierz klienta: ");
+                    for (int k = 0; k < klienci.size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". " + klienci.get(k).getImie() + " " + klienci.get(k).getNazwisko());
+                    }
+                    Scanner scWyborKlientaSzczegoly = new Scanner(System.in);
+                    int wyborKlientaSzczegoly = scWyborKlientaSzczegoly.nextInt() - 1;
+                    pracownicy.get(pracownik).sprawdzHistorie(klienci.get(wyborKlientaSzczegoly));
                     break;
                 case 4:
-
+                    System.out.println("Wybierz klienta: ");
+                    for (int k = 0; k < klienci.size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". " + klienci.get(k).getImie() + " " + klienci.get(k).getNazwisko());
+                    }
+                    Scanner scWyborKlientaDoplaty = new Scanner(System.in);
+                    int wyborKlientaDoplaty = scWyborKlientaDoplaty.nextInt() - 1;
+                    float sumaDoplat = 0;
+                    for (int wkd = 0; wkd < klienci.get(wyborKlientaDoplaty).getZakupy().size(); wkd++){
+                        sumaDoplat = sumaDoplat + klienci.get(wyborKlientaDoplaty).getZakupy().get(wkd).getDoplata();
+                    }
+                    System.out.println("Suma oczekiwanych srodkow wynosi: " + sumaDoplat + " zl");
                     break;
                 case 5:
-
-                    break;
-                case 6:
                     return;
                 default:
                     System.out.println("Nie ma takiej opcji...");
