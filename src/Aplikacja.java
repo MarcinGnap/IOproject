@@ -419,7 +419,24 @@ public class Aplikacja {
                     }
                     break;
                 case 2:
-
+                    System.out.println("Wybierz klienta: ");
+                    for (int k = 0; k < klienci.size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". " + klienci.get(k).getImie() + " " + klienci.get(k).getNazwisko());
+                    }
+                    Scanner scWyborKlienta = new Scanner(System.in);
+                    int wyborKlienta = scWyborKlienta.nextInt() - 1;
+                    System.out.println("Wybierz transakcje wybranego klienta: ");
+                    for (int k = 0; k < klienci.get(wyborKlienta).getZakupy().size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". ");
+                        for (int kns = 0; kns < klienci.get(wyborKlienta).getZakupy().get(k).getSprzet().size(); kns++) {
+                            System.out.println(klienci.get(wyborKlienta).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(wyborKlienta).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                        }
+                    }
+                    Scanner scWyborTransakcji = new Scanner(System.in);
+                    int wyborTransakcji = scWyborTransakcji.nextInt() - 1;
+                    pracownicy.get(pracownik).nakazZwrotu(klienci.get(wyborKlienta).getZakupy().get(wyborTransakcji));
                     break;
                 case 3:
 
