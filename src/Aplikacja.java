@@ -346,7 +346,30 @@ public class Aplikacja {
 
                     break;
                 case 5:
+                    System.out.println("Twoje transakcje: ");
+                    for (int k = 0; k < klienci.get(klient).getZakupy().size(); k++){
+                        int kn = k + 1;
+                        System.out.println(kn + ". ");
+                        for (int kns = 0; kns < klienci.get(klient).getZakupy().get(k).getSprzet().size(); kns++) {
+                            System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                        }
+                    }
+                    System.out.println("Wybierz zgubiony produkt: ");
+                    Scanner scAnulowanie = new Scanner(System.in);
+                    int wyborAnulowanie = scAnulowanie.nextInt();
 
+                    Scanner screzerwacjarok = new Scanner(System.in);
+                    Scanner screzerwacjamiesiac = new Scanner(System.in);
+                    Scanner screzerwacjadzien = new Scanner(System.in);
+                    System.out.println("Podaj dzisiejsza date: ");
+                    System.out.println("Podaj rok: ");
+                    int rok = screzerwacjarok.nextInt();
+                    System.out.println("Podaj miesiac (liczbowo): ");
+                    int miesiac = screzerwacjamiesiac.nextInt();
+                    System.out.println("Podaj dzien: ");
+                    int dzien = screzerwacjadzien.nextInt();
+                    LocalDate dataDzisiaj = LocalDate.of(rok, miesiac, dzien);
+                    klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
                     break;
                 case 6:
                     System.out.println("Twoje transakcje: ");
@@ -382,6 +405,7 @@ public class Aplikacja {
             int wyborPracownika = scp.nextInt();
             switch (wyborPracownika){
                 case 1:
+                    Produkt nowyProdukt = pracownicy.get(pracownik).stworzOferte();
 
                     break;
                 case 2:
