@@ -39,7 +39,6 @@ public class Pracownik extends Osoba {
     }
 
     public void nakazZwrotu(Transakcja transakcja) {
-        // TODO - implement Pracownik.nakazZwrotu
         szczegoly(transakcja);
         Vector<Produkt> tempSprzetNakaz = transakcja.getSprzet();
         System.out.println("Wybierz produkt, ktory ma zostac zwrocony (jesli wszystkie wybierz 0): ");

@@ -251,10 +251,10 @@ public class Aplikacja {
                                 "6. Powrot\n");
             int PK = sck.nextInt();
             int wyborPK = PK + 1;
-            if (wyborPK > klienci.size() + 1 || wyborPK < 0){
+            if (wyborPK > klienci.size() + 2 || wyborPK < 1){
                 System.out.println("Nie ma takiej opcji...");
             }
-            else if (wyborPK == klienci.size() + 1) {
+            else if (wyborPK == klienci.size() + 2) {
                 return;
             }
             else {
@@ -297,7 +297,7 @@ public class Aplikacja {
                                 "4. Przedluzenie wypozyczenia\n" +
                                 "5. Anulowanie rezerwacji\n" +
                                 "6. Zgloszenie zgubienia wypozyczonego produktu\n" +
-                                "7. \n");
+                                "7. Powrot\n");
             int wyborKlienta = sck.nextInt();
             switch (wyborKlienta){
                 case 1:
