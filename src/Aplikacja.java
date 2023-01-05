@@ -274,11 +274,11 @@ public class Aplikacja {
                     "5. Edyta Kobieraj\n" +
                     "6. Powrot\n");
             int PK = scp.nextInt();
-            int wyborPK = PK - 1;
-            if (wyborPK > pracownicy.size() + 1 || wyborPK < 0){
+            int wyborPK = PK + 1;
+            if (wyborPK > pracownicy.size() + 2 || wyborPK < 1){
                 System.out.println("Nie ma takiej opcji...");
             }
-            else if (wyborPK == pracownicy.size() + 1) {
+            else if (wyborPK == pracownicy.size() + 2) {
                 return;
             }
             else {
