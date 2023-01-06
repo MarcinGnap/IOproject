@@ -364,30 +364,37 @@ public class Aplikacja {
                     }
                     break;
                 case 5:
-                    System.out.println("Twoje transakcje: ");
-                    for (int k = 0; k < klienci.get(klient).getZakupy().size(); k++){
-                        int kn = k + 1;
-                        System.out.println(kn + ". ");
-                        for (int kns = 0; kns < klienci.get(klient).getZakupy().get(k).getSprzet().size(); kns++) {
-                            System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                    if(klienci.get(klient).getZakupy().size() > 0){
+                        System.out.println("Twoje transakcje: ");
+                         for (int k = 0; k < klienci.get(klient).getZakupy().size(); k++){
+                            int kn = k + 1;
+                            System.out.println(kn + ". ");
+                                for (int kns = 0; kns < klienci.get(klient).getZakupy().get(k).getSprzet().size(); kns++) {
+                                System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
+                            }
                         }
-                    }
-                    System.out.println("Wybierz zgubiony produkt: ");
-                    Scanner scAnulowanie = new Scanner(System.in);
-                    int wyborAnulowanie = scAnulowanie.nextInt();
+                        System.out.println("Wybierz zgubiony produkt: ");
+                        Scanner scAnulowanie = new Scanner(System.in);
+                        int wyborAnulowanie = scAnulowanie.nextInt();
 
-                    Scanner screzerwacjarok = new Scanner(System.in);
-                    Scanner screzerwacjamiesiac = new Scanner(System.in);
-                    Scanner screzerwacjadzien = new Scanner(System.in);
-                    System.out.println("Podaj dzisiejsza date: ");
-                    System.out.println("Podaj rok: ");
-                    int rokr = screzerwacjarok.nextInt();
-                    System.out.println("Podaj miesiac (liczbowo): ");
-                    int miesiacr = screzerwacjamiesiac.nextInt();
-                    System.out.println("Podaj dzien: ");
-                    int dzienr = screzerwacjadzien.nextInt();
-                    LocalDate dataDzisiaj = LocalDate.of(rokr, miesiacr, dzienr);
-                    klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
+                        Scanner screzerwacjarok = new Scanner(System.in);
+                        Scanner screzerwacjamiesiac = new Scanner(System.in);
+                        Scanner screzerwacjadzien = new Scanner(System.in);
+                        System.out.println("Podaj dzisiejsza date: ");
+                        System.out.println("Podaj rok: ");
+                        int rokr = screzerwacjarok.nextInt();
+                        System.out.println("Podaj miesiac (liczbowo): ");
+                        int miesiacr = screzerwacjamiesiac.nextInt();
+                        System.out.println("Podaj dzien: ");
+                        int dzienr = screzerwacjadzien.nextInt();
+                        LocalDate dataDzisiaj = LocalDate.of(rokr, miesiacr, dzienr);
+                        klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
+
+                        // TODO - check if rezerwacja exist
+                    }
+                    else {
+                        System.out.println("Nie masz zadnej rezerwacji.");
+                    }
                     break;
                 case 6:
                     System.out.println("Twoje transakcje: ");
