@@ -388,9 +388,13 @@ public class Aplikacja {
                         System.out.println("Podaj dzien: ");
                         int dzienr = screzerwacjadzien.nextInt();
                         LocalDate dataDzisiaj = LocalDate.of(rokr, miesiacr, dzienr);
-                        klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
 
-                        // TODO - check if rezerwacja exist
+                        if(dataDzisiaj.isBefore(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1).getDataPaczatku())){
+                            klienci.get(klient).anulujRezerwacje(klienci.get(klient).getZakupy().get(wyborAnulowanie - 1), dataDzisiaj);
+                        }
+                        else{
+                            System.out.println("Nie mozna anulowac wybranej transakcji...");
+                        }
                     }
                     else {
                         System.out.println("Nie masz zadnej rezerwacji.");
