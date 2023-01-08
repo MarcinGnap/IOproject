@@ -325,11 +325,16 @@ public class Aplikacja {
                     int wyborRezerwacja = scNumerProduktuRezerwacja.nextInt();
                     Vector<Produkt> rezerwacja = new Vector<>();
                     rezerwacja.add(oferty.get(wyborRezerwacja - 1));
-                    oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
-                    Vector<LocalDate> dataRezerwacji = klienci.get(klient).okresCzasuKlienta(oferty.get(wyborRezerwacja));
+                    if(oferty.get(wyborRezerwacja - 1).getDostepny() > 0) {
+                        oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
+                        Vector<LocalDate> dataRezerwacji = klienci.get(klient).okresCzasuKlienta(oferty.get(wyborRezerwacja - 1));
 // TODO kolidacja z innymi rezerwacjami
-                    Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
-                    klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
+                        Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
+                        klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
+                    }
+                    else{
+                        System.out.println("Brak wystarczajacej liczby produktow...");
+                    }
                     break;
                 case 4:
                     System.out.println("Twoje transakcje: ");
