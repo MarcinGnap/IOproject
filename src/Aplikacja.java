@@ -326,11 +326,15 @@ public class Aplikacja {
                     Vector<Produkt> rezerwacja = new Vector<>();
                     rezerwacja.add(oferty.get(wyborRezerwacja - 1));
                     if(oferty.get(wyborRezerwacja - 1).getDostepny() > 0) {
-                        oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
                         Vector<LocalDate> dataRezerwacji = klienci.get(klient).okresCzasuKlienta(oferty.get(wyborRezerwacja - 1));
-// TODO kolidacja z innymi rezerwacjami
-                        Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
-                        klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
+                        if(!sprawdzKolidacje(oferty.get(wyborRezerwacja - 1), dataRezerwacji.get(0), dataRezerwacji.get(1))){
+                            oferty.get(wyborRezerwacja - 1).setDostepny(oferty.get(wyborRezerwacja - 1).getDostepny() - 1);
+                            Transakcja transakcjaRezerwacja = new Transakcja(dataRezerwacji.get(0), dataRezerwacji.get(1), 0, rezerwacja, 0);
+                            klienci.get(klient).dodajTransakcje(transakcjaRezerwacja);
+                        }
+                        else {
+                            System.out.println("Rezerwacja pokrywa sie z innym zamowieniem...");
+                        }
                     }
                     else{
                         System.out.println("Brak wystarczajacej liczby produktow...");
@@ -378,7 +382,7 @@ public class Aplikacja {
                                 System.out.println(klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getNazwa() + " x " + klienci.get(klient).getZakupy().get(k).getSprzet().get(kns).getDostepny());
                             }
                         }
-                        System.out.println("Wybierz zgubiony produkt: ");
+                        System.out.println("Wybierz rezerwacje do anulowania: ");
                         Scanner scAnulowanie = new Scanner(System.in);
                         int wyborAnulowanie = scAnulowanie.nextInt();
 
