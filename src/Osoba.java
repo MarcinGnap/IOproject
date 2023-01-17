@@ -45,7 +45,14 @@ public abstract class Osoba{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        if (email==null) {
+            throw new IllegalArgumentException("NULL");
+        }
+        else if(email.contains("@")) {
+            this.email = email;
+        }else {
+            throw new IllegalArgumentException("brak @");
+        }
     }
 
 }
